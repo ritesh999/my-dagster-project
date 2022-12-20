@@ -1,0 +1,87 @@
+
+create table crashes_dimension(
+	crash_record_id character varying(300),
+	rd_no character varying(100),
+	crash_date timestamp,
+	posted_speed_limit int,
+	traffic_control_device character varying(50),
+	device_condition character varying(50),
+	weather_condition character varying(50),
+	lighting_condition character varying(50),
+	first_crash_type character varying(50),
+	trafficway_type character varying(50),
+	alignment character varying(50),
+	roadway_surface_cond character varying(50),
+	road_defect character varying(50),
+	crash_type character varying(50),
+	year int,
+	month int,
+	day int,
+	injuries_total int,
+	injuries_fatal int,
+	injuries_incapacitating int,
+	injuries_non_incapacitating int,
+	injuries_reported_not_evident int,
+	injuries_no_indication int
+	);
+
+
+-------------------------------
+
+--vehicle
+create table vehicle_dimension(
+crash_unit_id int,
+unit_no int,
+rd_no character varying(100),
+unit_type character varying(100),
+crash_record_id character varying(300),
+vehicle_id int,
+make character varying(100),
+model character varying(100),
+vehicle_type character varying(100),
+vehicle_defect character varying(100),
+vehicle_use character varying(100),
+travel_direction character varying(50),
+maneuver character varying(300));
+
+
+-----------------------------------------------------------------------------
+
+
+--people
+create table people_dimension(
+person_id character varying(100),
+person_type character varying(100),
+crash_record_id character varying(300),
+rd_no character varying(300),
+vehicle_id int,
+sex character varying(300),
+safety_equipment character varying(300),
+injury_classification character varying(300),
+driver_action character varying(300),
+driver_vision character varying(300),
+physical_condition character varying(50),
+city character varying(100),
+state character varying(100),
+zipcode character varying(100),
+age int,
+drivers_license_state character varying(100),
+drivers_license_class character varying(100) );
+
+
+--------------------------------------------------------------fact
+
+
+
+create table crash_vehicle_people_fact(
+	crash_record_id character varying(300),
+	injuries_total int,
+	injuries_fatal int,
+	injuries_incapacitating int,
+	injuries_non_incapacitating int,
+	injuries_reported_not_evident int,
+	injuries_no_indication int);
+
+
+
+
